@@ -18,3 +18,16 @@ npm start
 Then open `http://127.0.0.1:3000`.
 
 Allow location access so the app can load prayer times for your area.
+
+## iOS app
+
+This repo now also includes a native SwiftUI iPhone/iPad app in:
+
+- `RamadanCompassIOS.xcodeproj`
+- `RamadanCompassIOS/`
+
+Open the Xcode project, choose a simulator or device, and run the app. The iOS app uses:
+
+- `CoreLocation` for local prayer times
+- `CLGeocoder` for place naming
+- AlAdhan API for prayer timing data
