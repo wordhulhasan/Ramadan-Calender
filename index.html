@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramadan Compass</title>
+    <meta
+      name="description"
+      content="A location-aware Islamic dashboard with Ramadan day tracking, Suhoor and Iftar cards, live prayer windows, and a prayer timeline."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Live Ramadan Companion</p>
+          <h1>Ramadan Compass</h1>
+          <p class="hero-text">
+            A beautiful prayer dashboard that finds your location, tracks the fasting day, and keeps the current and next prayer windows clear at a glance.
+          </p>
+          <div class="hero-meta">
+            <div class="meta-pill">
+              <span class="meta-label">Location</span>
+              <strong id="location-name">Finding your location...</strong>
+            </div>
+            <div class="meta-pill">
+              <span class="meta-label">Today</span>
+              <strong id="gregorian-date">Loading date...</strong>
+            </div>
+            <div class="meta-pill">
+              <span class="meta-label">Hijri</span>
+              <strong id="hijri-date">Loading Hijri date...</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="moon-glow"></div>
+          <div class="spotlight-card">
+            <p class="spotlight-label">Ramadan Day</p>
+            <strong id="ramadan-day-display">Checking...</strong>
+            <span id="ramadan-day-subtitle">Loading Ramadan calendar...</span>
+          </div>
+          <button id="refresh-location" class="ghost-button" type="button">
+            Refresh my location
+          </button>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="status-grid">
+          <article class="stat-card fasting-card">
+            <div class="card-topline">
+              <span class="card-kicker">Fasting</span>
+              <span class="card-chip" id="fasting-chip">Live</span>
+            </div>
+            <h2>Suhoor / Sehri Ends</h2>
+            <p class="time-value" id="suhoor-time">--:--</p>
+            <p class="card-note" id="suhoor-note">Waiting for prayer data...</p>
+          </article>
+
+          <article class="stat-card iftar-card">
+            <div class="card-topline">
+              <span class="card-kicker">Fasting</span>
+              <span class="card-chip warm-chip">Today</span>
+            </div>
+            <h2>Iftar Begins</h2>
+            <p class="time-value" id="iftar-time">--:--</p>
+            <p class="card-note" id="iftar-note">Waiting for prayer data...</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="card-topline">
+              <span class="card-kicker">Prayer Window</span>
+              <span class="card-chip subtle-chip">Now</span>
+            </div>
+            <h2>Current Waqt</h2>
+            <p class="status-value" id="current-waqt">Loading...</p>
+            <p class="card-note" id="current-waqt-note">Calculating active prayer time...</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="card-topline">
+              <span class="card-kicker">Prayer Window</span>
+              <span class="card-chip subtle-chip">Next</span>
+            </div>
+            <h2>Next Waqt</h2>
+            <p class="status-value" id="next-waqt">Loading...</p>
+            <p class="card-note" id="next-waqt-note">Calculating what comes next...</p>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <article class="panel timeline-panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">Prayer Flow</p>
+                <h2>Today's prayer timeline</h2>
+              </div>
+              <span id="timeline-caption" class="section-tag">Loading...</span>
+            </div>
+            <div id="timeline" class="timeline-list"></div>
+          </article>
+
+          <article class="panel calendar-panel">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">Ramadan Calendar</p>
+                <h2 id="calendar-title">Loading Ramadan month...</h2>
+              </div>
+              <span id="calendar-tag" class="section-tag">Loading...</span>
+            </div>
+            <div id="calendar-grid" class="calendar-grid"></div>
+          </article>
+        </section>
+
+        <section class="panel helper-panel">
+          <div class="helper-grid">
+            <div>
+              <p class="section-kicker">Quick Context</p>
+              <h2>Prayer insight</h2>
+              <p id="insight-text" class="helper-text">
+                Waiting for location and prayer data...
+              </p>
+            </div>
+            <div class="support-box">
+              <p class="support-label">Source stack</p>
+              <strong>Browser geolocation + AlAdhan + reverse geocoding</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
